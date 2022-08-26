@@ -1,0 +1,51 @@
+.container-box{
+    margin: 0 auto;
+    max-width: 450px;
+}
+
+.container-box p{
+    text-align: center;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#text-input{
+    padding: 10px;
+    height: 80px;
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #6a71a7;
+    outline: none;
+    background-color: #242424;
+    color: #fff;
+}
+
+.footer-box{
+   margin-top: 5px;
+   text-align: right;
+}
+
+.container-box-btns{
+    color: #6a71a7;
+    background-color: transparent;
+    border: none;
+    font-size:25px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#file-btn{
+    display: none;
+}
+
+.footer-box label{
+    color: #FFF;
+    cursor: pointer;
+    color: #6a71a7;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/* #text-input:focus{
+    box-shadow: 
+} */

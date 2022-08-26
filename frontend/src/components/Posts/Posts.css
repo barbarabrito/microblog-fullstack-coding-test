@@ -1,0 +1,10 @@
+.container-posts{
+    color: #000;
+    margin-top: 3em;
+}
+
+.posts{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+}
