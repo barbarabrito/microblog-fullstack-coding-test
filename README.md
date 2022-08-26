@@ -1,6 +1,8 @@
 # Full Stack Coding test
 
- # Neste teste eu utilizei:
+### A microblog app
+
+# Neste teste eu utilizei:
 
  - React.js
  - Nodejs
@@ -11,6 +13,10 @@
  - react-icons
  - react-modal
  - date-fns
+
+ ## Preview
+
+![preview](preview/test_preview.png)
 
  ### Instruções
 
