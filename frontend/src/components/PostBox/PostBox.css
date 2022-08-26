@@ -113,6 +113,7 @@
    border: none;
    color: #34414c;
    font-size: 20px;
+   cursor: pointer;
 }
 
 .container-delete{
