@@ -17,5 +17,11 @@ export const useApi = () => ({
     removePost: async (id) => {
         const response = await(api.delete(`post/${id}`))
         return response.data;
+    },
+    updatePost: async (id, text) => {
+        const response = await(api.put(`post/${id}`, {text}))
+        return response.data;
+
     }
+
 });

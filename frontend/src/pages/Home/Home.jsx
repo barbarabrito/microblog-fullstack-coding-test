@@ -6,7 +6,7 @@ export const Home = () => {
     return(
         <main className="container-main-home">
             <PostBox/>
-            <Posts/>
+            <Posts />
         </main>
     )
 }
