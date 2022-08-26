@@ -1,11 +1,14 @@
 import './PostBox.css';
 import { MdSend } from 'react-icons/md';
 import { ImFilePicture } from 'react-icons/im';
-import { useState, useEffect, useParams } from 'react';
+import { useState, useEffect } from 'react';
 import { useApi } from '../../hooks/useApi';
 import { BsTrash } from 'react-icons/bs';
 import { FiEdit } from 'react-icons/fi';
 import Modal from 'react-modal';
+import { format } from 'date-fns';
+import { enUS } from 'date-fns/locale';
+import { RiCloseFill } from 'react-icons/ri'
 
 const customStyles = {
     content: {
@@ -46,20 +49,19 @@ export const PostBox = () => {
         setIsOpen(false);
     }
 
-    async function editPost(e){
+    async function editPost(e) {
         e.preventDefault();
         console.log(postId);
         console.log(text);
-        try{
+        try {
             await api.updatePost(postId, text)
             setPosts([...posts]);
             setIsOpen(false);
             setText('');
             window.location.reload;
-        }catch(error){
+        } catch (error) {
             console.log(error);
         }
-        
     }
 
     useEffect(() => {
@@ -89,7 +91,7 @@ export const PostBox = () => {
     }
 
     const handleRemovePost = async (id) => {
-        if (window.confirm("Tem certeza que deseja deletar este veículo?")) {
+        if (window.confirm("Tem certeza que deseja deletar este post?")) {
             try {
                 await api.removePost(id)
                 const updatedPosts = posts.filter((post) => post._id != id)
@@ -102,7 +104,6 @@ export const PostBox = () => {
         }
     }
 
-
     return (
         <>
             <div className="container-box">
@@ -112,6 +113,11 @@ export const PostBox = () => {
                     id="text-input"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
+                    onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                            handleNewPost();
+                        }
+                    }}
                     placeholder="What's happening?"
                 >
 
@@ -125,12 +131,18 @@ export const PostBox = () => {
             <div className="container-posts">
 
                 {posts.map((post) =>
+
                     <div className="posts" key={post._id}>
                         <div className="post-header">
-                            {/* <p>{post.createdAt}</p> */}
-                            <button id="edit-post-btn" onClick={(e) => { openModal(post.text, post._id)}}><FiEdit /></button>
+                            <div className="msg-time">
+                                <p><small>{format(new Date(post.createdAt), "PPPP 'at' h:mm a", { locale: enUS, })}</small></p>
+                                
+                            </div>
+
+                            <button id="edit-post-btn" onClick={(e) => { openModal(post.text, post._id) }}><FiEdit /></button>
                             <button id="delete-post-btn" onClick={(e) => { handleRemovePost(post._id) }}><BsTrash /></button>
                         </div>
+                        <br/>
                         <Modal
                             isOpen={modalIsOpen}
                             onAfterOpen={afterOpenModal}
@@ -138,16 +150,23 @@ export const PostBox = () => {
                             onUpdatedPost={editPost}
                             style={customStyles}
                             contentLabel="Example Modal"
-                        >
-                            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-                            <button onClick={closeModal}>close</button>
-                            <div>I am a modal</div>
+                            >
+                            <h2 ref={(_subtitle) => (subtitle = _subtitle)}><FiEdit /> Edit Post</h2>
+                            <button onClick={closeModal} id="btn_close_modal"><RiCloseFill /></button>
+
                             <form>
-                                <textarea defaultValue={text} onChange={(e) => setText(e.target.value)}/>
-                                <button id="update-post-btn"onClick={(e) => { editPost(e, postId) }}>save</button>
+                                <div className="container-form">
+                                    <textarea id="textarea-edit-post" defaultValue={text} onChange={(e) => setText(e.target.value)} />
+                                    <div className="container-delete">
+                                        <button id="update-post-btn" onClick={(e) => { editPost(e, postId) }}>save</button>
+                                    </div>
+                                </div>
                             </form>
                         </Modal>
                         {post.text}
+                        <div className="updated-time">
+                            <p><small>Last updated at: {format(new Date(post.updatedAt), "PPPP 'at' h:mm a", { locale: enUS, })}</small></p>
+                        </div>
                     </div>
                 )}
 
