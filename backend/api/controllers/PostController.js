@@ -23,7 +23,8 @@ module.exports = class PostController {
     }
 
     static async getAllPosts(req, res) {
-        const posts = await Post.find().sort();
+
+        const posts = await Post.find().sort({createdAt: -1});
 
         res.status(200).json({
             posts,
