@@ -1,21 +1,13 @@
-nav{
-    padding: 2px;
-    display: flex;
-    justify-content:space-between;
-}
-
 nav li{
     list-style: none;
-    display: inline;
-    display: flex;
+    display: block;
 }
 
 nav a{
     color: #7f88cc;
-    margin: 0 10px;
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+    font-size: 30px; 
 }
 
 nav a:hover{
@@ -29,23 +21,6 @@ nav a:hover{
 
 }
 
-.main-nav{
-    display: flex;
-    justify-content:flex-start;
-    align-items: center;
-}
-
-.right-nav{
-    display: inline;
-    margin-right: 30px;
-}
-
 .main-nav li{
     display: inline;
-}
-
-.right-nav{
-    display: flex;
-    justify-content: right;
-    align-items: center;
 }

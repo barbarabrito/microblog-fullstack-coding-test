@@ -13,5 +13,9 @@ export const useApi = () => ({
     getAllPosts: async () => {
         const response = await(api.get('post//get/all'))
         return response.data;
+    },
+    removePost: async (id) => {
+        const response = await(api.delete(`post/${id}`))
+        return response.data;
     }
 });
