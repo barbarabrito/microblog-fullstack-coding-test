@@ -20,6 +20,12 @@
 
  ### Instruções
 
+Instalar as dependências:
+
+```bash
+npm install
+```
+
 Para executar o back end:
 
  ```bash

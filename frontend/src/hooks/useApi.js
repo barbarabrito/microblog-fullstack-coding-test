@@ -11,7 +11,7 @@ export const useApi = () => ({
         return response.data;
     },
     getAllPosts: async () => {
-        const response = await(api.get('post//get/all'))
+        const response = await(api.get('post/get/all'))
         return response.data;
     },
     removePost: async (id) => {
