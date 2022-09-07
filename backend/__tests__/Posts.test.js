@@ -37,7 +37,4 @@ describe('Testing posts route', ()=> {
         });
 
     });
-    
-    
-
 });
